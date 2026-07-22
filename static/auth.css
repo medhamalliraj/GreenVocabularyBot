@@ -1,0 +1,92 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#d4fc79,#96e6a1);
+}
+
+.auth-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.auth-card{
+    width:400px;
+    background:#ffffff;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.auth-card h1{
+    text-align:center;
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+.auth-card h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#333;
+}
+
+.auth-card input{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+}
+
+.auth-card input:focus{
+    border-color:#43a047;
+    box-shadow:0 0 5px rgba(67,160,71,0.3);
+}
+
+.auth-card button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#43a047;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.auth-card button:hover{
+    background:#2e7d32;
+}
+
+.auth-card p{
+    text-align:center;
+    margin-top:20px;
+}
+
+.auth-card a{
+    text-decoration:none;
+    color:#2e7d32;
+    font-weight:600;
+}
+
+#message{
+    margin-top:20px;
+    text-align:center;
+    font-weight:600;
+    color:#d32f2f;
+}

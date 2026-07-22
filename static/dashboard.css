@@ -1,0 +1,253 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    background:linear-gradient(
+        135deg,
+        #d4fc79,
+        #96e6a1
+    );
+
+}
+
+
+
+.navbar{
+
+    background:white;
+
+    padding:18px 50px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+
+
+.logo{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#2e7d32;
+
+}
+
+
+
+.nav-links{
+
+    display:flex;
+
+    gap:25px;
+
+}
+
+
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:500;
+
+}
+
+
+
+.nav-links a:hover{
+
+    color:#2e7d32;
+
+}
+
+
+
+.dashboard-container{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:40px auto;
+
+}
+
+
+
+
+
+.hero{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+
+}
+
+
+
+.hero h1{
+
+    color:#2e7d32;
+
+    margin-bottom:10px;
+
+}
+
+
+
+
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+
+
+
+.stat-box{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+
+    transition:0.3s;
+
+}
+
+
+
+.stat-box:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+
+.icon{
+
+    font-size:35px;
+
+}
+
+
+
+.stat-box span{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#2e7d32;
+
+}
+
+
+
+
+
+
+.recent{
+
+    margin-top:40px;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:25px;
+
+}
+
+
+
+.recent h2{
+
+    color:#2e7d32;
+
+}
+
+
+
+#chatList{
+
+    margin-top:20px;
+
+}
+
+
+
+.actions{
+
+    margin-top:30px;
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+
+
+button{
+
+    padding:14px 25px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#2e7d32;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+
+
+button:hover{
+
+    opacity:0.8;
+
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Green Vocabulary AI | Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='dashboard.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        🌿 Green Vocabulary AI
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Chat
+        </a>
+
+        <a href="/chat-history-page">
+            History
+        </a>
+
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+
+<div class="dashboard-container">
+
+
+<section class="hero">
+
+
+<h1>
+Welcome back, <span id="welcome">User</span> 🌱
+</h1>
+
+
+<p>
+Continue growing your vocabulary with nature-inspired learning.
+</p>
+
+
+</section>
+
+
+
+
+
+<div class="stats">
+
+
+<div class="stat-box">
+
+<div class="icon">
+💬
+</div>
+
+<h3>
+Total Chats
+</h3>
+
+<span id="chatCount">
+0
+</span>
+
+</div>
+
+
+
+
+
+<div class="stat-box">
+
+<div class="icon">
+📚
+</div>
+
+<h3>
+Words Learned
+</h3>
+
+<span id="wordCount">
+0
+</span>
+
+</div>
+
+
+
+
+
+<div class="stat-box">
+
+<div class="icon">
+🌱
+</div>
+
+<h3>
+Eco Learning
+</h3>
+
+<span>
+Active
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<section class="recent">
+
+
+<h2>
+Recent Conversations 🌿
+</h2>
+
+
+<div id="chatList">
+
+Loading...
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<div class="actions">
+
+
+<button onclick="openChat()">
+
+💬 Open Chatbot
+
+</button>
+
+
+
+<button onclick="logout()">
+
+🚪 Logout
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+
+
+</body>
+
+</html>

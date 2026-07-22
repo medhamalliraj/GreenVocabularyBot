@@ -1,0 +1,105 @@
+{
+  "busy": {
+    "emotion": "Busy",
+    "sentiment": "Neutral",
+    "rewrite": "🐝 I'm buzzing like a busy bee today.",
+    "meaning": "Busy bees symbolize productivity and teamwork.",
+    "eco_fact": "Bees pollinate nearly 75% of flowering plants.",
+    "green_word": "Pollination",
+    "word_meaning": "The process of transferring pollen to help plants reproduce.",
+    "eco_tip": "Take a short break outside to refresh your mind.",
+    "sustainable_habit": "Carry a reusable water bottle.",
+    "challenge": "Avoid single-use plastic today."
+  },
+
+  "happy": {
+    "emotion": "Happy",
+    "sentiment": "Positive",
+    "rewrite": "🌻 I'm blooming like a sunflower.",
+    "meaning": "Sunflowers represent happiness and positivity.",
+    "eco_fact": "Sunflowers attract bees and butterflies.",
+    "green_word": "Bloom",
+    "word_meaning": "To grow and flower beautifully.",
+    "eco_tip": "Spend 10 minutes enjoying nature today.",
+    "sustainable_habit": "Water plants using leftover drinking water.",
+    "challenge": "Plant a flower this week."
+  },
+
+  "sad": {
+    "emotion": "Sad",
+    "sentiment": "Negative",
+    "rewrite": "🌧️ My mood feels like a rainy forest waiting for sunshine.",
+    "meaning": "Rainy days remind us that brighter days always return.",
+    "eco_fact": "Rainwater is an important source of fresh water for plants.",
+    "green_word": "Ecosystem",
+    "word_meaning": "A community of living organisms and their environment.",
+    "eco_tip": "Take a short walk among trees to improve your mood.",
+    "sustainable_habit": "Switch off lights when leaving a room.",
+    "challenge": "Spend 15 minutes outside today."
+  },
+
+  "angry": {
+    "emotion": "Angry",
+    "sentiment": "Negative",
+    "rewrite": "🌋 My emotions are like a volcano preparing to erupt.",
+    "meaning": "Strong emotions are powerful but can be controlled.",
+    "eco_fact": "Volcanic soil is one of the most fertile soils on Earth.",
+    "green_word": "Resilience",
+    "word_meaning": "The ability to recover from difficult situations.",
+    "eco_tip": "Take deep breaths outdoors.",
+    "sustainable_habit": "Use reusable shopping bags.",
+    "challenge": "Pick up five pieces of litter today."
+  },
+
+  "calm": {
+    "emotion": "Calm",
+    "sentiment": "Positive",
+    "rewrite": "🍃 I'm as calm as a gentle forest breeze.",
+    "meaning": "Nature teaches us peace and balance.",
+    "eco_fact": "Forests help reduce air pollution.",
+    "green_word": "Canopy",
+    "word_meaning": "The upper layer of trees in a forest.",
+    "eco_tip": "Sit under a tree for a few minutes.",
+    "sustainable_habit": "Turn off unnecessary electrical devices.",
+    "challenge": "Listen to natural sounds for 10 minutes."
+  },
+
+  "excited": {
+    "emotion": "Excited",
+    "sentiment": "Positive",
+    "rewrite": "🦋 I'm fluttering like a butterfly in spring.",
+    "meaning": "Butterflies symbolize joy and transformation.",
+    "eco_fact": "Butterflies are important pollinators.",
+    "green_word": "Metamorphosis",
+    "word_meaning": "A complete transformation during growth.",
+    "eco_tip": "Visit a nearby garden this week.",
+    "sustainable_habit": "Walk instead of using a vehicle for short distances.",
+    "challenge": "Plant one native flowering plant."
+  },
+
+  "tired": {
+    "emotion": "Tired",
+    "sentiment": "Negative",
+    "rewrite": "🌳 I feel like a tree resting after a long day.",
+    "meaning": "Even nature needs time to recover.",
+    "eco_fact": "Trees absorb carbon dioxide and release oxygen.",
+    "green_word": "Photosynthesis",
+    "word_meaning": "The process by which plants make food using sunlight.",
+    "eco_tip": "Rest while enjoying fresh air.",
+    "sustainable_habit": "Reduce screen brightness to save energy.",
+    "challenge": "Watch a sunset instead of using your phone."
+  },
+
+  "love": {
+    "emotion": "Happy",
+    "sentiment": "Positive",
+    "rewrite": "🌹 My heart is blooming like a rose garden.",
+    "meaning": "Love grows stronger when cared for, just like plants.",
+    "eco_fact": "Healthy gardens support biodiversity.",
+    "green_word": "Biodiversity",
+    "word_meaning": "The variety of living organisms in an environment.",
+    "eco_tip": "Plant something with someone you care about.",
+    "sustainable_habit": "Use cloth bags while shopping.",
+    "challenge": "Share one eco-friendly habit with a friend."
+  }
+}

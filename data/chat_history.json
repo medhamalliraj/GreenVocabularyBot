@@ -1,0 +1,50 @@
+[
+    {
+        "timestamp": "21-07-2026 06:46:46 PM",
+        "user": "im happy",
+        "response": {
+            "emotion": "Happy",
+            "sentiment": "Positive",
+            "rewrite": "\ud83c\udf3b I'm blooming like a sunflower.",
+            "meaning": "Sunflowers represent happiness and positivity.",
+            "eco_fact": "Sunflowers attract bees and butterflies.",
+            "green_word": "Bloom",
+            "word_meaning": "To grow and flower beautifully.",
+            "eco_tip": "Spend 10 minutes enjoying nature today.",
+            "sustainable_habit": "Water plants using leftover drinking water.",
+            "challenge": "Plant a flower this week."
+        }
+    },
+    {
+        "timestamp": "21-07-2026 06:47:02 PM",
+        "user": "im brave",
+        "response": {
+            "emotion": "Proud",
+            "sentiment": "Positive",
+            "rewrite": "I am as resilient as an ancient oak weathering the storm.",
+            "meaning": "You possess the inner strength and courage to face challenges head-on.",
+            "eco_fact": "Oak trees can live for over 1,000 years, surviving centuries of storms and climate shifts.",
+            "green_word": "Resilience",
+            "word_meaning": "The ability of an ecosystem or organism to recover quickly from difficulties or disturbances.",
+            "eco_tip": "Plant native trees to help your local soil and wildlife build natural resilience.",
+            "sustainable_habit": "Choose to repair damaged belongings instead of throwing them away.",
+            "challenge": "Be brave this week and talk to one friend about a simple eco-friendly change they can make!"
+        }
+    },
+    {
+        "timestamp": "21-07-2026 07:37:56 PM",
+        "user": "im soo happy",
+        "response": {
+            "emotion": "Happy",
+            "sentiment": "Positive",
+            "rewrite": "\ud83c\udf3b I'm blooming like a sunflower.",
+            "meaning": "Sunflowers represent happiness and positivity.",
+            "eco_fact": "Sunflowers attract bees and butterflies.",
+            "green_word": "Bloom",
+            "word_meaning": "To grow and flower beautifully.",
+            "eco_tip": "Spend 10 minutes enjoying nature today.",
+            "sustainable_habit": "Water plants using leftover drinking water.",
+            "challenge": "Plant a flower this week."
+        }
+    }
+]

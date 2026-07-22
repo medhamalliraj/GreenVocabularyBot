@@ -1,0 +1,1138 @@
+/* ==========================================
+   GOOGLE FONT
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ==========================================
+   BODY
+========================================== */
+
+body{
+
+    background:linear-gradient(135deg,#d4fc79,#96e6a1);
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    transition:.35s;
+
+}
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.container{
+
+    width:100%;
+
+    max-width:1150px;
+
+    height:92vh;
+
+    background:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:
+
+        0 20px 45px rgba(0,0,0,.18);
+
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header{
+
+    height:85px;
+
+    background:linear-gradient(135deg,#2e7d32,#43a047);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 30px;
+
+    color:white;
+
+}
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#2e7d32;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+}
+
+.title h2{
+
+    font-size:25px;
+
+    font-weight:700;
+
+}
+
+.title p{
+
+    font-size:13px;
+
+    opacity:.9;
+
+}
+
+/* ==========================================
+   HEADER BUTTONS
+========================================== */
+
+.header-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.top-btn{
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    background:white;
+
+    color:#2e7d32;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.top-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:#ecfff0;
+
+}
+
+.theme-btn{
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    transition:.3s;
+
+}
+
+.theme-btn:hover{
+
+    transform:rotate(20deg);
+
+}
+
+.logout-btn{
+
+    border:none;
+
+    background:#ef5350;
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.logout-btn:hover{
+
+    background:#d32f2f;
+
+}
+
+/* ==========================================
+   CHAT AREA
+========================================== */
+
+.chat-box{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    background:#f4fff6;
+
+    padding:30px;
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+.chat-box::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.chat-box::-webkit-scrollbar-thumb{
+
+    background:#81c784;
+
+    border-radius:30px;
+
+}
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.message{
+
+    display:flex;
+
+    margin-bottom:22px;
+
+    animation:fadeIn .35s ease;
+
+}
+
+.user-message{
+
+    justify-content:flex-end;
+
+}
+
+.bot-message{
+
+    justify-content:flex-start;
+
+}
+
+/* ==========================================
+   AVATAR
+========================================== */
+
+.avatar{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    flex-shrink:0;
+
+}
+
+.bot-avatar{
+
+    background:#2e7d32;
+
+    color:white;
+
+    margin-right:12px;
+
+}
+
+.user-avatar{
+
+    background:#1565c0;
+
+    color:white;
+
+    margin-left:12px;
+
+}
+
+/* ==========================================
+   CHAT BUBBLES
+========================================== */
+
+.bubble{
+
+    max-width:72%;
+
+    padding:16px 20px;
+
+    border-radius:18px;
+
+    line-height:1.7;
+
+    word-break:break-word;
+
+    font-size:15px;
+
+}
+
+.bot-message .bubble{
+
+    background:white;
+
+    color:#333;
+
+    border-top-left-radius:6px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.user-message .bubble{
+
+    background:#2e7d32;
+
+    color:white;
+
+    border-top-right-radius:6px;
+
+}
+/* ==========================================
+   TYPING INDICATOR
+========================================== */
+
+.typing{
+
+    display:flex;
+
+    align-items:center;
+
+    padding:15px 30px;
+
+    background:#f4fff6;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.typing-bubble{
+
+    background:white;
+
+    padding:14px 18px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    gap:6px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.typing-bubble span{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#2e7d32;
+
+    animation:blink 1.2s infinite;
+
+}
+
+.typing-bubble span:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.typing-bubble span:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+/* ==========================================
+   INPUT AREA
+========================================== */
+
+.input-area{
+
+    display:flex;
+
+    gap:15px;
+
+    padding:20px;
+
+    background:white;
+
+    border-top:1px solid #e5e5e5;
+
+}
+
+#user-input{
+
+    flex:1;
+
+    border:2px solid #d9d9d9;
+
+    border-radius:35px;
+
+    padding:15px 22px;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+#user-input:focus{
+
+    border-color:#43a047;
+
+    box-shadow:0 0 10px rgba(67,160,71,.25);
+
+}
+
+#send-btn{
+
+    width:60px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#2e7d32;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#send-btn:hover{
+
+    background:#1b5e20;
+
+    transform:scale(1.08);
+
+}
+
+/* ==========================================
+   HISTORY MODAL
+========================================== */
+
+.history-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+    padding:20px;
+
+}
+
+.history-modal.show{
+
+    display:flex;
+
+}
+
+.history-content{
+
+    width:100%;
+
+    max-width:700px;
+
+    max-height:82vh;
+
+    background:white;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    animation:fadeIn .3s ease;
+
+}
+
+.history-header{
+
+    background:linear-gradient(135deg,#2e7d32,#43a047);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 25px;
+
+}
+
+.history-header h2{
+
+    font-size:22px;
+
+}
+
+.close-history{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#2e7d32;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.close-history:hover{
+
+    transform:rotate(90deg);
+
+}
+
+#historySearch{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:15px;
+
+    border:2px solid #ddd;
+
+    outline:none;
+
+    font-size:15px;
+
+}
+
+#historySearch:focus{
+
+    border-color:#43a047;
+
+}
+
+/* ==========================================
+   HISTORY LIST
+========================================== */
+
+.history-list{
+
+    padding:20px;
+
+    background:#f5fff7;
+
+    max-height:60vh;
+
+    overflow-y:auto;
+
+}
+
+.history-card{
+
+    background:white;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    margin-bottom:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    border-left:6px solid #43a047;
+
+}
+
+.history-card h3{
+
+    color:#2e7d32;
+
+    margin-bottom:10px;
+
+    font-size:18px;
+
+}
+
+.history-card p{
+
+    color:#444;
+
+    line-height:1.6;
+
+}
+
+.history-empty{
+
+    text-align:center;
+
+    color:#777;
+
+    padding:40px;
+
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes blink{
+
+    0%,80%,100%{
+
+        opacity:.3;
+
+    }
+
+    40%{
+
+        opacity:1;
+
+    }
+
+}
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark-mode{
+
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+
+}
+
+body.dark-mode .container{
+
+    background:#1e293b;
+
+}
+
+body.dark-mode .header{
+
+    background:linear-gradient(135deg,#14532d,#166534);
+
+}
+
+body.dark-mode .chat-box{
+
+    background:#0f172a;
+
+}
+
+body.dark-mode .typing{
+
+    background:#0f172a;
+
+}
+
+body.dark-mode .bot-message .bubble{
+
+    background:#334155;
+
+    color:white;
+
+}
+
+body.dark-mode .user-message .bubble{
+
+    background:#16a34a;
+
+}
+
+body.dark-mode .input-area{
+
+    background:#1e293b;
+
+    border-top:1px solid #475569;
+
+}
+
+body.dark-mode #user-input{
+
+    background:#334155;
+
+    color:white;
+
+    border:2px solid #475569;
+
+}
+
+body.dark-mode #user-input::placeholder{
+
+    color:#cbd5e1;
+
+}
+
+body.dark-mode .typing-bubble{
+
+    background:#334155;
+
+}
+
+body.dark-mode .theme-btn{
+
+    background:#334155;
+
+    color:white;
+
+}
+
+body.dark-mode .top-btn{
+
+    background:#334155;
+
+    color:white;
+
+}
+
+body.dark-mode .logout-btn{
+
+    background:#dc2626;
+
+}
+
+body.dark-mode .history-content{
+
+    background:#1e293b;
+
+}
+
+body.dark-mode .history-list{
+
+    background:#0f172a;
+
+}
+
+body.dark-mode .history-card{
+
+    background:#334155;
+
+    border-left:6px solid #22c55e;
+
+}
+
+body.dark-mode .history-card h3{
+
+    color:#86efac;
+
+}
+
+body.dark-mode .history-card p{
+
+    color:#e2e8f0;
+
+}
+
+body.dark-mode #historySearch{
+
+    background:#334155;
+
+    color:white;
+
+    border:2px solid #475569;
+
+}
+
+body.dark-mode #historySearch::placeholder{
+
+    color:#cbd5e1;
+
+}
+
+body.dark-mode .close-history{
+
+    background:#334155;
+
+    color:white;
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+.history-list::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.history-list::-webkit-scrollbar-thumb{
+
+    background:#7cb342;
+
+    border-radius:20px;
+
+}
+
+body.dark-mode .history-list::-webkit-scrollbar-thumb{
+
+    background:#22c55e;
+
+}
+
+/* ==========================================
+   BUTTON EFFECTS
+========================================== */
+
+.top-btn,
+.logout-btn,
+.theme-btn,
+#send-btn,
+.close-history{
+
+    transition:all .3s ease;
+
+}
+
+.top-btn:hover,
+.logout-btn:hover,
+.theme-btn:hover,
+#send-btn:hover,
+.close-history:hover{
+
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+}
+
+/* ==========================================
+   INPUT ANIMATION
+========================================== */
+
+#user-input{
+
+    transition:
+
+        border-color .3s,
+
+        box-shadow .3s,
+
+        background .3s;
+
+}
+
+/* ==========================================
+   RESPONSIVE TABLET
+========================================== */
+
+@media(max-width:900px){
+
+.header{
+
+    flex-wrap:wrap;
+
+    height:auto;
+
+    padding:20px;
+
+}
+
+.logo-area{
+
+    width:100%;
+
+    margin-bottom:15px;
+
+}
+
+.header-actions{
+
+    width:100%;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+.bubble{
+
+    max-width:85%;
+
+}
+
+}
+
+/* ==========================================
+   RESPONSIVE MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+body{
+
+    padding:0;
+
+}
+
+.container{
+
+    height:100vh;
+
+    border-radius:0;
+
+}
+
+.header{
+
+    padding:15px;
+
+}
+
+.title h2{
+
+    font-size:20px;
+
+}
+
+.title p{
+
+    display:none;
+
+}
+
+.logo{
+
+    width:45px;
+
+    height:45px;
+
+    font-size:24px;
+
+}
+
+.top-btn{
+
+    font-size:13px;
+
+    padding:8px 12px;
+
+}
+
+.logout-btn{
+
+    font-size:13px;
+
+    padding:8px 12px;
+
+}
+
+.chat-box{
+
+    padding:18px;
+
+}
+
+.avatar{
+
+    width:40px;
+
+    height:40px;
+
+    font-size:18px;
+
+}
+
+.bubble{
+
+    max-width:90%;
+
+    font-size:14px;
+
+}
+
+.input-area{
+
+    padding:15px;
+
+}
+
+#user-input{
+
+    font-size:14px;
+
+    padding:14px 18px;
+
+}
+
+#send-btn{
+
+    width:52px;
+
+    height:52px;
+
+}
+
+.history-content{
+
+    max-height:90vh;
+
+}
+
+}
+
+/* ==========================================
+   SMOOTH SCROLL
+========================================== */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+/* ==========================================
+   SELECTION COLOR
+========================================== */
+
+::selection{
+
+    background:#43a047;
+
+    color:white;
+
+}
+
+/* ==========================================
+   END
+========================================== */

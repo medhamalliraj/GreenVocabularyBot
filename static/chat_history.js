@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-
     loadChats();
 
 
@@ -8,9 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
     .getElementById("search")
     .addEventListener("input", function(){
 
-
         loadChats(this.value);
-
 
     });
 
@@ -37,7 +34,7 @@ function loadChats(searchText=""){
         document.getElementById("chatList");
 
 
-        chatList.innerHTML="";
+        chatList.innerHTML = "";
 
 
 
@@ -61,13 +58,11 @@ function loadChats(searchText=""){
 
             chats = chats.filter(chat =>
 
-
                 chat.message
                 .toLowerCase()
                 .includes(
                     searchText.toLowerCase()
                 )
-
 
             );
 
@@ -85,8 +80,8 @@ function loadChats(searchText=""){
 
             return;
 
-
         }
+
 
 
 
@@ -95,24 +90,28 @@ function loadChats(searchText=""){
 
 
 
-            let response = chat.response;
+            let response;
 
 
 
             try{
 
                 response =
-                JSON.parse(response);
+                JSON.parse(chat.response);
 
 
             }
 
             catch(error){
 
-                response =
-                chat.response;
+                response = {
+
+                    rewrite: chat.response
+
+                };
 
             }
+
 
 
 
@@ -120,11 +119,13 @@ function loadChats(searchText=""){
             chatList.innerHTML += `
 
 
+
             <div class="chat-card">
 
 
+
                 <h3>
-                🌿 You:
+                👤 You
                 </h3>
 
 
@@ -134,17 +135,101 @@ function loadChats(searchText=""){
 
 
 
+
                 <h3>
-                🤖 Green AI:
+                🌿 Green AI
                 </h3>
 
 
+
+
                 <p>
-                ${
-                    response.rewrite ||
-                    response
-                }
+                🌿 Rewrite:
+                <br>
+                ${response.rewrite || ""}
                 </p>
+
+
+
+
+                <p>
+                📖 Meaning:
+                <br>
+                ${response.meaning || ""}
+                </p>
+
+
+
+
+                <p>
+                😊 Emotion:
+                <br>
+                ${response.emotion || ""}
+                </p>
+
+
+
+
+                <p>
+                💚 Sentiment:
+                <br>
+                ${response.sentiment || ""}
+                </p>
+
+
+
+
+                <p>
+                🌱 Green Word:
+                <br>
+                ${response.green_word || ""}
+                </p>
+
+
+
+
+                <p>
+                📘 Word Meaning:
+                <br>
+                ${response.word_meaning || ""}
+                </p>
+
+
+
+
+                <p>
+                🌍 Eco Fact:
+                <br>
+                ${response.eco_fact || ""}
+                </p>
+
+
+
+
+                <p>
+                ♻ Eco Tip:
+                <br>
+                ${response.eco_tip || ""}
+                </p>
+
+
+
+
+                <p>
+                🌳 Sustainable Habit:
+                <br>
+                ${response.sustainable_habit || ""}
+                </p>
+
+
+
+
+                <p>
+                🎯 Eco Challenge:
+                <br>
+                ${response.challenge || ""}
+                </p>
+
 
 
 
@@ -156,26 +241,35 @@ function loadChats(searchText=""){
 
 
 
-                
+
+
                 <button
-class="continue-btn"
-onclick="continueChat(${chat.id})">
 
-Continue Chat
+                class="continue-btn"
 
-</button>
+                onclick="continueChat(${chat.id})">
+
+                Continue Chat
+
+                </button>
 
 
-<button
-class="delete-btn"
-onclick="deleteChat(${chat.id})">
 
-Delete
 
-</button>
+                <button
+
+                class="delete-btn"
+
+                onclick="deleteChat(${chat.id})">
+
+                Delete
+
+                </button>
+
 
 
             </div>
+
 
 
             `;
@@ -185,11 +279,14 @@ Delete
         });
 
 
+
     });
 
 
 
 }
+
+
 
 
 
@@ -213,9 +310,7 @@ function deleteChat(id){
 
         if(data.success){
 
-
             loadChats();
-
 
         }
 
@@ -223,7 +318,15 @@ function deleteChat(id){
     });
 
 
+
 }
+
+
+
+
+
+
+
 function continueChat(id){
 
 

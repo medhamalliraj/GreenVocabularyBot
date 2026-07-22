@@ -33,6 +33,7 @@ last_ai_response = {}
 
 
 
+
 # ==========================
 # Home Page
 # ==========================
@@ -41,27 +42,27 @@ last_ai_response = {}
 def home():
 
     if "user_id" not in session:
-
         return redirect("/login")
 
 
-    response = render_template("index.html")
+    old_message = session.pop("old_message", None)
+    old_response = session.pop("old_response", None)
 
 
-    session.pop("old_message", None)
+    if old_response:
 
-    session.pop("old_response", None)
+        try:
+            old_response = json.loads(old_response)
 
-
-    return response
-
-    if "user_id" not in session:
-
-        return redirect("/login")
+        except:
+            pass
 
 
-    return render_template("index.html")
-
+    return render_template(
+        "index.html",
+        old_message=old_message,
+        old_response=old_response
+    )
 
 
 # ==========================
@@ -175,17 +176,7 @@ def delete_user_chat(chat_id):
 
     })
 
-def chat_history_api():
 
-    if "user_id" not in session:
-
-        return jsonify({
-
-            "success": False,
-
-            "message": "User not logged in"
-
-        })
 
 
     chats = get_user_chats()
@@ -217,22 +208,24 @@ def chat_history_api():
 
     })
 
+# ==========================
+# Continue Chat
+# ==========================
+
 @app.route("/continue-chat/<int:chat_id>")
 def continue_chat(chat_id):
 
     if "user_id" not in session:
-
         return redirect("/login")
 
 
     connection = get_connection()
-
     cursor = connection.cursor()
 
 
     cursor.execute(
         """
-        SELECT *
+        SELECT user_message, bot_response
         FROM chats
         WHERE id=? AND user_id=?
         """,
@@ -245,8 +238,8 @@ def continue_chat(chat_id):
 
     chat = cursor.fetchone()
 
-
     connection.close()
+
 
 
     if chat:
@@ -256,12 +249,18 @@ def continue_chat(chat_id):
         session["old_response"] = chat["bot_response"]
 
 
+        print("✅ Previous chat loaded")
+
+    else:
+
+        print("❌ Chat not found")
+
+
     return redirect("/")
 
 # ==========================
 # Chat API
 # ==========================
-
 @app.route("/chat", methods=["POST"])
 def chat():
 

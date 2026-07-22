@@ -1,103 +1,74 @@
-// ==========================================
-// Green Vocabulary AI
-// Version 2
-// ==========================================
+document.addEventListener("DOMContentLoaded", function(){
 
-// DOM Elements
 
-const chatBox = document.getElementById("chat-box");
-const userInput = document.getElementById("user-input");
-const sendBtn = document.getElementById("send-btn");
+    const sendBtn = document.getElementById("send-btn");
+    const input = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
 
-const typing = document.getElementById("typing");
 
-const themeBtn = document.getElementById("themeToggle");
+    // ==========================
+    // Send Message
+    // ==========================
 
-const historyBtn = document.getElementById("historyBtn");
 
-const dashboardBtn = document.getElementById("dashboardBtn");
+    sendBtn.addEventListener("click", sendMessage);
 
-const logoutBtn = document.getElementById("logoutBtn");
 
-const chatHistoryBtn = document.getElementById("chatHistoryBtn");
 
-const historyModal = document.getElementById("historyModal");
+    input.addEventListener("keypress", function(e){
 
-const closeHistory = document.getElementById("closeHistory");
+        if(e.key === "Enter"){
 
-const historyList = document.getElementById("historyList");
+            sendMessage();
 
-const historySearch = document.getElementById("historySearch");
+        }
 
-// ==========================================
-// Welcome Message
-// ==========================================
+    });
 
-window.onload = () => {
 
-    loadTheme();
 
-    addBotMessage(
-`👋 Hello!
 
-I'm your Green Vocabulary AI.
 
-🌿 I can teach eco-friendly vocabulary.
+    // ==========================
+    // Send Chat
+    // ==========================
 
-♻ I can rewrite your sentences.
 
-🌎 I can share eco facts.
+    function sendMessage(){
 
-💚 I can suggest sustainable habits.
 
-Ask me anything!`
-    );
+        let message = input.value.trim();
 
-};
 
-// ==========================================
-// Send Button
-// ==========================================
+        if(message === "") return;
 
-sendBtn.addEventListener("click", sendMessage);
 
-// Press Enter
 
-userInput.addEventListener("keypress", function(e){
+        addMessage(
+            message,
+            "user"
+        );
 
-    if(e.key==="Enter"){
 
-        sendMessage();
+        input.value="";
 
-    }
 
-});
 
-// ==========================================
-// Send Message
-// ==========================================
+        showTyping();
 
-async function sendMessage(){
 
-    const message = userInput.value.trim();
 
-    if(message==="") return;
+        fetch("/chat",{
 
-    addUserMessage(message);
-
-    userInput.value="";
-
-    typing.classList.remove("hidden");
-
-    try{
-
-        const response = await fetch("/chat",{
 
             method:"POST",
 
             headers:{
+
                 "Content-Type":"application/json"
+
             },
+
 
             body:JSON.stringify({
 
@@ -105,67 +76,127 @@ async function sendMessage(){
 
             })
 
+
+        })
+
+        .then(response=>response.json())
+
+
+        .then(data=>{
+
+
+            hideTyping();
+
+
+            addBotResponse(data);
+
+
+
+        })
+
+
+        .catch(error=>{
+
+
+            hideTyping();
+
+
+            addMessage(
+
+                "⚠️ Something went wrong",
+
+                "bot"
+
+            );
+
+
         });
 
-        const data = await response.json();
 
-        typing.classList.add("hidden");
-
-        showAIResponse(data);
 
     }
 
-    catch(error){
 
-        typing.classList.add("hidden");
 
-        addBotMessage("❌ Unable to connect to the server.");
 
-        console.error(error);
 
-    }
 
-}
 
-// ==========================================
-// User Bubble
-// ==========================================
+    // ==========================
+    // Add User Message
+    // ==========================
 
-function addUserMessage(text){
 
-    chatBox.innerHTML += `
+    function addMessage(message,type){
 
-    <div class="message user-message">
+
+        let div=document.createElement("div");
+
+
+        div.className =
+        type==="user"
+        ?
+        "message user-message"
+        :
+        "message bot-message";
+
+
+
+        div.innerHTML = `
+
+
+        <div class="avatar">
+
+            ${type==="user"?"👤":"🌿"}
+
+        </div>
+
 
         <div class="bubble">
 
-            ${text}
+            ${message}
 
         </div>
 
-        <div class="avatar user-avatar">
 
-            👤
+        `;
 
-        </div>
 
-    </div>
 
-    `;
+        chatBox.appendChild(div);
 
-    scrollBottom();
 
-}
+        chatBox.scrollTop =
+        chatBox.scrollHeight;
 
-// ==========================================
-// Bot Bubble
-// ==========================================
 
-function addBotMessage(text){
 
-    chatBox.innerHTML += `
+    }
 
-    <div class="message bot-message">
+
+
+
+
+
+
+    // ==========================
+    // Gemini Response Format
+    // ==========================
+
+
+    function addBotResponse(data){
+
+
+        let div=document.createElement("div");
+
+
+        div.className="message bot-message";
+
+
+
+        div.innerHTML = `
+
+
 
         <div class="avatar bot-avatar">
 
@@ -173,491 +204,320 @@ function addBotMessage(text){
 
         </div>
 
-        <div class="bubble">
 
-            ${text.replace(/\n/g,"<br>")}
-
-        </div>
-
-    </div>
-
-    `;
-
-    scrollBottom();
-
-}
-
-// ==========================================
-// Scroll
-// ==========================================
-
-function scrollBottom(){
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-}
-// ==========================================
-// Beautiful AI Response
-// ==========================================
-
-function showAIResponse(data){
-
-    let html = "";
-
-    if(data.rewrite){
-
-        html += `
-        <p><strong>🌿 Rewrite</strong><br>${data.rewrite}</p><br>
-        `;
-    }
-
-    if(data.meaning){
-
-        html += `
-        <p><strong>📖 Meaning</strong><br>${data.meaning}</p><br>
-        `;
-    }
-
-    if(data.emotion){
-
-        html += `
-        <p><strong>😊 Emotion</strong><br>${data.emotion}</p><br>
-        `;
-    }
-
-    if(data.sentiment){
-
-        html += `
-        <p><strong>💚 Sentiment</strong><br>${data.sentiment}</p><br>
-        `;
-    }
-
-    if(data.green_word){
-
-        html += `
-        <p><strong>🌱 Green Word</strong><br>${data.green_word}</p><br>
-        `;
-    }
-
-    if(data.word_meaning){
-
-        html += `
-        <p><strong>📘 Word Meaning</strong><br>${data.word_meaning}</p><br>
-        `;
-    }
-
-    if(data.eco_fact){
-
-        html += `
-        <p><strong>🌍 Eco Fact</strong><br>${data.eco_fact}</p><br>
-        `;
-    }
-
-    if(data.eco_tip){
-
-        html += `
-        <p><strong>♻ Eco Tip</strong><br>${data.eco_tip}</p><br>
-        `;
-    }
-
-    if(data.sustainable_habit){
-
-        html += `
-        <p><strong>🌳 Sustainable Habit</strong><br>${data.sustainable_habit}</p><br>
-        `;
-    }
-
-    if(data.challenge){
-
-        html += `
-        <p><strong>🎯 Eco Challenge</strong><br>${data.challenge}</p>
-        `;
-    }
-
-    if(html===""){
-
-        html="<p>No response received.</p>";
-
-    }
-
-    chatBox.innerHTML += `
-
-    <div class="message bot-message">
-
-        <div class="avatar bot-avatar">
-
-            🌿
-
-        </div>
 
         <div class="bubble">
 
-            ${html}
+
+
+        <h3>
+        🌿 Rewrite
+        </h3>
+
+        <p>
+        ${data.rewrite || ""}
+        </p>
+
+
+
+        <h3>
+        📖 Meaning
+        </h3>
+
+        <p>
+        ${data.meaning || ""}
+        </p>
+
+
+
+        <h3>
+        😊 Emotion
+        </h3>
+
+        <p>
+        ${data.emotion || ""}
+        </p>
+
+
+
+        <h3>
+        💚 Sentiment
+        </h3>
+
+        <p>
+        ${data.sentiment || ""}
+        </p>
+
+
+
+
+        <h3>
+        🌱 Green Word
+        </h3>
+
+        <p>
+        ${data.green_word || ""}
+        </p>
+
+
+
+        <h3>
+        📘 Word Meaning
+        </h3>
+
+        <p>
+        ${data.word_meaning || ""}
+        </p>
+
+
+
+        <h3>
+        🌍 Eco Fact
+        </h3>
+
+        <p>
+        ${data.eco_fact || ""}
+        </p>
+
+
+
+
+        <h3>
+        ♻ Eco Tip
+        </h3>
+
+        <p>
+        ${data.eco_tip || ""}
+        </p>
+
+
+
+
+        <h3>
+        🌳 Sustainable Habit
+        </h3>
+
+        <p>
+        ${data.sustainable_habit || ""}
+        </p>
+
+
+
+
+        <h3>
+        🎯 Eco Challenge
+        </h3>
+
+        <p>
+        ${data.challenge || ""}
+        </p>
+
+
 
         </div>
 
-    </div>
 
-    `;
 
-    scrollBottom();
+        `;
 
-}
 
-// ==========================================
-// Dashboard
-// ==========================================
 
-dashboardBtn.addEventListener("click",()=>{
+        chatBox.appendChild(div);
 
-    window.location.href="/dashboard";
 
-});
 
-// ==========================================
-// Logout
-// ==========================================
+        chatBox.scrollTop =
+        chatBox.scrollHeight;
 
-logoutBtn.addEventListener("click",()=>{
 
-    window.location.href="/logout";
-
-});
-
-// ==========================================
-// Chat History
-// ==========================================
-
-chatHistoryBtn.addEventListener("click",()=>{
-
-    window.location.href="/chat-history-page";
-
-});
-
-// ==========================================
-// Theme
-// ==========================================
-
-themeBtn.addEventListener("click",()=>{
-
-    document.body.classList.toggle("dark-mode");
-
-    if(document.body.classList.contains("dark-mode")){
-
-        localStorage.setItem("theme","dark");
-
-        themeBtn.innerHTML="☀";
 
     }
 
-    else{
 
-        localStorage.setItem("theme","light");
 
-        themeBtn.innerHTML="🌙";
 
-    }
 
-});
 
-function loadTheme(){
 
-    const theme=localStorage.getItem("theme");
 
-    if(theme==="dark"){
+    // ==========================
+    // Typing Animation
+    // ==========================
 
-        document.body.classList.add("dark-mode");
 
-        themeBtn.innerHTML="☀";
+    function showTyping(){
+
+        document
+        .getElementById("typing")
+        .classList.remove("hidden");
 
     }
 
-}
-// ==========================================
-// HISTORY MODAL
-// ==========================================
 
-// Open History
 
-historyBtn.addEventListener("click", () => {
+    function hideTyping(){
 
-    historyModal.classList.add("show");
-
-    loadHistory();
-
-});
-
-// Close History
-
-closeHistory.addEventListener("click", () => {
-
-    historyModal.classList.remove("show");
-
-});
-
-// Click Outside
-
-window.addEventListener("click", (e) => {
-
-    if(e.target === historyModal){
-
-        historyModal.classList.remove("show");
+        document
+        .getElementById("typing")
+        .classList.add("hidden");
 
     }
 
-});
 
-// ESC Key
 
-document.addEventListener("keydown",(e)=>{
 
-    if(e.key==="Escape"){
 
-        historyModal.classList.remove("show");
 
-    }
 
-});
+    // ==========================
+    // Theme Toggle
+    // ==========================
 
-// ==========================================
-// LOAD VOCABULARY HISTORY
-// ==========================================
 
-async function loadHistory(){
+    document
+    .getElementById("themeToggle")
+    ?.addEventListener("click",()=>{
 
-    historyList.innerHTML = "Loading...";
 
-    try{
+        document.body.classList.toggle("dark");
 
-        const response = await fetch("/history");
 
-        const data = await response.json();
+    });
 
-        if(data.length===0){
 
-            historyList.innerHTML=`
-                <div class="history-empty">
-                    🌱 No vocabulary learned yet.
-                </div>
-            `;
 
-            return;
 
-        }
 
-        let html="";
 
-        data.forEach((item,index)=>{
 
-            html+=`
+    // ==========================
+    // Navigation Buttons
+    // ==========================
 
-            <div class="history-card">
+
+    document
+    .getElementById("dashboardBtn")
+    ?.addEventListener("click",()=>{
+
+        window.location.href="/dashboard";
+
+    });
+
+
+
+    document
+    .getElementById("chatHistoryBtn")
+    ?.addEventListener("click",()=>{
+
+        window.location.href="/chat-history-page";
+
+    });
+
+
+
+    document
+    .getElementById("logoutBtn")
+    ?.addEventListener("click",()=>{
+
+        window.location.href="/logout";
+
+    });
+
+
+
+
+
+
+    // ==========================
+    // Vocabulary History
+    // ==========================
+
+
+    document
+    .getElementById("historyBtn")
+    ?.addEventListener("click",()=>{
+
+
+        document
+        .getElementById("historyModal")
+        .style.display="block";
+
+
+        loadVocabulary();
+
+
+    });
+
+
+
+    document
+    .getElementById("closeHistory")
+    ?.addEventListener("click",()=>{
+
+
+        document
+        .getElementById("historyModal")
+        .style.display="none";
+
+
+    });
+
+
+
+
+
+
+
+    function loadVocabulary(){
+
+
+        fetch("/history")
+
+        .then(res=>res.json())
+
+        .then(data=>{
+
+
+            let list =
+            document.getElementById("historyList");
+
+
+            list.innerHTML="";
+
+
+
+            data.forEach(word=>{
+
+
+                list.innerHTML += `
+
+
+                <div class="history-item">
 
                 <h3>
-
-                    🌿 ${item.word}
-
+                🌱 ${word.word}
                 </h3>
 
                 <p>
-
-                    ${item.meaning}
-
+                ${word.meaning}
                 </p>
 
-            </div>
+                </div>
 
-            `;
+
+                `;
+
+
+            });
+
+
 
         });
 
-        historyList.innerHTML=html;
+
 
     }
 
-    catch(error){
 
-        historyList.innerHTML=`
-            <div class="history-empty">
-                Unable to load history.
-            </div>
-        `;
-
-        console.error(error);
-
-    }
-
-}
-
-// ==========================================
-// SEARCH HISTORY
-// ==========================================
-
-historySearch.addEventListener("keyup",function(){
-
-    const value=this.value.toLowerCase();
-
-    const cards=document.querySelectorAll(".history-card");
-
-    cards.forEach(card=>{
-
-        const text=card.innerText.toLowerCase();
-
-        if(text.includes(value)){
-
-            card.style.display="block";
-
-        }
-
-        else{
-
-            card.style.display="none";
-
-        }
-
-    });
 
 });
-// ==========================================
-// FINAL UTILITIES
-// ==========================================
-
-// Clear Search When Modal Closes
-
-function resetHistorySearch(){
-
-    if(historySearch){
-
-        historySearch.value="";
-
-    }
-
-    const cards=document.querySelectorAll(".history-card");
-
-    cards.forEach(card=>{
-
-        card.style.display="block";
-
-    });
-
-}
-
-// Close Button
-
-closeHistory.addEventListener("click",()=>{
-
-    resetHistorySearch();
-
-});
-
-// Outside Click
-
-window.addEventListener("click",(e)=>{
-
-    if(e.target===historyModal){
-
-        resetHistorySearch();
-
-    }
-
-});
-
-// ==========================================
-// AUTO SCROLL
-// ==========================================
-
-function smoothScroll(){
-
-    chatBox.scrollTo({
-
-        top:chatBox.scrollHeight,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-// Override scrollBottom()
-
-scrollBottom = smoothScroll;
-
-// ==========================================
-// INPUT FOCUS
-// ==========================================
-
-window.addEventListener("load",()=>{
-
-    if(userInput){
-
-        userInput.focus();
-
-    }
-
-});
-
-// ==========================================
-// DISABLE SEND BUTTON WHILE REQUEST RUNS
-// ==========================================
-
-const originalSendMessage = sendMessage;
-
-sendMessage = async function(){
-
-    if(sendBtn.disabled) return;
-
-    sendBtn.disabled = true;
-
-    sendBtn.style.opacity = "0.6";
-
-    sendBtn.style.cursor = "not-allowed";
-
-    try{
-
-        await originalSendMessage();
-
-    }
-
-    finally{
-
-        sendBtn.disabled = false;
-
-        sendBtn.style.opacity = "1";
-
-        sendBtn.style.cursor = "pointer";
-
-        userInput.focus();
-
-    }
-
-};
-
-// ==========================================
-// EMPTY HISTORY MESSAGE
-// ==========================================
-
-function showEmptyHistory(message){
-
-    historyList.innerHTML = `
-
-    <div class="history-empty">
-
-        ${message}
-
-    </div>
-
-    `;
-
-}
-
-// ==========================================
-// CONSOLE MESSAGE
-// ==========================================
-
-console.log("🌿 Green Vocabulary AI Loaded Successfully!");
-
-console.log("Version 2 UI Ready");
-
-// ==========================================
-// END OF FILE
-// ==========================================

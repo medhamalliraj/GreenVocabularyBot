@@ -4,270 +4,99 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Green Vocabulary AI</title>
 
-    <link rel="stylesheet" 
+    <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
-
 <body>
 
-
 <div class="container">
-
 
     <!-- ================= HEADER ================= -->
 
     <header class="header">
 
-
         <div class="logo-area">
-
 
             <div class="logo">
                 🌿
             </div>
 
-
             <div class="title">
 
-                <h2>
-                    Green Vocabulary AI
-                </h2>
+                <h2>Green Vocabulary AI</h2>
 
-                <p>
-                    Learn Sustainability with AI
-                </p>
+                <p>Learn Sustainability with AI</p>
 
             </div>
 
-
         </div>
-
-
 
         <div class="header-actions">
 
-
-            <button 
-            id="dashboardBtn" 
-            class="top-btn">
+            <button
+                id="dashboardBtn"
+                class="top-btn">
 
                 📊 Dashboard
 
             </button>
 
-
-
-            <button 
-            id="historyBtn" 
-            class="top-btn">
+            <button
+                id="historyBtn"
+                class="top-btn">
 
                 📚 Vocabulary
 
             </button>
 
-
-
-            <button 
-            id="chatHistoryBtn" 
-            class="top-btn">
+            <button
+                id="chatHistoryBtn"
+                class="top-btn">
 
                 💬 Chats
 
             </button>
 
-
-
-            <button 
-            id="themeToggle" 
-            class="theme-btn">
+            <button
+                id="themeToggle"
+                class="theme-btn">
 
                 🌙
 
             </button>
 
-
-
-            <button 
-            id="logoutBtn" 
-            class="logout-btn">
+            <button
+                id="logoutBtn"
+                class="logout-btn">
 
                 Logout
 
             </button>
 
-
         </div>
-
 
     </header>
 
 
 
-
-
     <!-- ================= CHAT AREA ================= -->
 
+    <main
+        id="chat-box"
+        class="chat-box">
 
-    <main 
-   
-id="chat-box" 
-class="chat-box">
 
+    {% if not old_message %}
 
-{% if old_message %}
-
-
-<div class="message user-message">
-
-
-    <div class="avatar">
-
-        👤
-
-    </div>
-
-
-    <div class="bubble">
-
-        {{ old_message }}
-
-    </div>
-
-
-</div>
-
-
-
-
-<div class="message bot-message">
-
-
-    <div class="avatar bot-avatar">
-
-        🌿
-
-    </div>
-
-
-
-    <div class="bubble">
-
-
-       <h3>
-🌿 Rewrite
-</h3>
-
-<p>
-{{ old_response.rewrite }}
-</p>
-
-
-<h3>
-📖 Meaning
-</h3>
-
-<p>
-{{ old_response.meaning }}
-</p>
-
-
-<h3>
-😊 Emotion
-</h3>
-
-<p>
-{{ old_response.emotion }}
-</p>
-
-
-<h3>
-💚 Sentiment
-</h3>
-
-<p>
-{{ old_response.sentiment }}
-</p>
-
-
-<h3>
-🌱 Green Word
-</h3>
-
-<p>
-{{ old_response.green_word }}
-</p>
-
-
-<h3>
-📘 Word Meaning
-</h3>
-
-<p>
-{{ old_response.word_meaning }}
-</p>
-
-
-<h3>
-🌍 Eco Fact
-</h3>
-
-<p>
-{{ old_response.eco_fact }}
-</p>
-
-
-<h3>
-♻ Eco Tip
-</h3>
-
-<p>
-{{ old_response.eco_tip }}
-</p>
-
-
-<h3>
-🌳 Sustainable Habit
-</h3>
-
-<p>
-{{ old_response.sustainable_habit }}
-</p>
-
-
-<h3>
-🎯 Eco Challenge
-</h3>
-
-<p>
-{{ old_response.challenge }}
-</p>
-
-
-{% endif %}
-
-
-
-</main>
-
-
-
-
-
-
-
-    <!-- ================= TYPING ================= -->
-
-
-    <div 
-    id="typing" 
-    class="typing hidden">
-
+    <div class="message bot-message">
 
         <div class="avatar bot-avatar">
 
@@ -275,46 +104,239 @@ class="chat-box">
 
         </div>
 
+        <div class="bubble">
 
-        <div class="typing-bubble">
+            <h2>
+                👋 Welcome to Green Vocabulary AI
+            </h2>
 
+            <br>
 
-            <span></span>
+            <p>
 
-            <span></span>
+                I'm your AI assistant for learning
+                sustainability and green vocabulary.
 
-            <span></span>
+            </p>
 
+            <br>
+
+            <h3>
+                🌍 I can help you with:
+            </h3>
+
+            <br>
+
+            <ul>
+
+                <li>🌱 Green Vocabulary</li>
+
+                <li>🌿 Nature Inspired Sentence Rewriting</li>
+
+                <li>🌎 Eco Facts</li>
+
+                <li>♻ Eco Tips</li>
+
+                <li>😊 Emotion & Sentiment Analysis</li>
+
+                <li>🌳 Sustainable Habits</li>
+
+                <li>🎯 Daily Eco Challenges</li>
+
+            </ul>
+
+            <br>
+
+            <p>
+
+                <strong>Try asking:</strong>
+
+            </p>
+
+            <br>
+
+            <p>
+                🌱 Give me a green word
+            </p>
+
+            <p>
+                🌍 Tell me an eco fact
+            </p>
+
+            <p>
+                ♻ Give me an eco tip
+            </p>
+
+            <p>
+                🌳 Suggest a sustainable habit
+            </p>
+
+            <p>
+                ✨ Rewrite "I am busy"
+            </p>
 
         </div>
 
+    </div>
+
+    {% endif %}
+    {% if old_message %}
+
+<div class="message user-message">
+
+    <div class="avatar">
+
+        👤
+
+    </div>
+
+    <div class="bubble">
+
+        {{ old_message }}
+
+    </div>
+
+</div>
+
+
+
+<div class="message bot-message">
+
+    <div class="avatar bot-avatar">
+
+        🌿
+
+    </div>
+
+    <div class="bubble">
+
+        <h3>
+            🌿 Rewrite
+        </h3>
+
+        <p>
+            {{ old_response.rewrite }}
+        </p>
+
+        <h3>
+            📖 Meaning
+        </h3>
+
+        <p>
+            {{ old_response.meaning }}
+        </p>
+
+        <h3>
+            😊 Emotion
+        </h3>
+
+        <p>
+            {{ old_response.emotion }}
+        </p>
+
+        <h3>
+            💚 Sentiment
+        </h3>
+
+        <p>
+            {{ old_response.sentiment }}
+        </p>
+
+        <h3>
+            🌱 Green Word
+        </h3>
+
+        <p>
+            {{ old_response.green_word }}
+        </p>
+
+        <h3>
+            📘 Word Meaning
+        </h3>
+
+        <p>
+            {{ old_response.word_meaning }}
+        </p>
+
+        <h3>
+            🌍 Eco Fact
+        </h3>
+
+        <p>
+            {{ old_response.eco_fact }}
+        </p>
+
+        <h3>
+            ♻ Eco Tip
+        </h3>
+
+        <p>
+            {{ old_response.eco_tip }}
+        </p>
+
+        <h3>
+            🌳 Sustainable Habit
+        </h3>
+
+        <p>
+            {{ old_response.sustainable_habit }}
+        </p>
+
+        <h3>
+            🎯 Eco Challenge
+        </h3>
+
+        <p>
+            {{ old_response.challenge }}
+        </p>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+    </main>
+
+
+
+    <!-- ================= TYPING ================= -->
+
+    <div
+        id="typing"
+        class="typing hidden">
+
+        <div class="avatar bot-avatar">
+
+            🌿
+
+        </div>
+
+        <div class="typing-bubble">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
 
     </div>
 
 
 
-
-
-
-
-
     <!-- ================= INPUT ================= -->
-
 
     <div class="input-area">
 
-
         <input
 
-        id="user-input"
+            id="user-input"
 
-        type="text"
+            type="text"
 
-        placeholder="Ask anything about nature, sustainability or green vocabulary..."
+            placeholder="Ask anything about nature, sustainability or green vocabulary..."
 
         >
-
-
 
         <button id="send-btn">
 
@@ -322,152 +344,82 @@ class="chat-box">
 
         </button>
 
-
-
     </div>
 
-
-
-
-
 </div>
-
-
-
-
-
-
-
 <!-- ================= VOCABULARY HISTORY MODAL ================= -->
 
-
-<div 
-id="historyModal" 
-class="history-modal">
-
-
+<div
+    id="historyModal"
+    class="history-modal">
 
     <div class="history-content">
 
-
-
         <div class="history-header">
-
 
             <h2>
                 🌿 Vocabulary History
             </h2>
 
-
-
-            <button 
-            id="closeHistory" 
-            class="close-history">
+            <button
+                id="closeHistory"
+                class="close-history">
 
                 ✕
 
             </button>
 
-
         </div>
-
-
-
-
 
         <div style="padding:15px;">
 
-
-
             <input
 
-            id="historySearch"
+                id="historySearch"
 
-            type="text"
+                type="text"
 
-            placeholder="Search words..."
+                placeholder="Search words..."
 
-            style="
-            width:100%;
-            padding:12px;
-            border-radius:12px;
-            border:1px solid #ddd;
-            "
+                style="
+                    width:100%;
+                    padding:12px;
+                    border-radius:12px;
+                    border:1px solid #ddd;
+                "
 
             >
 
-
-
         </div>
-
-
-
-
-
 
         <div
 
-        id="historyList"
+            id="historyList"
 
-        class="history-list">
-
+            class="history-list">
 
         </div>
 
-
-
-
-
     </div>
-
-
 
 </div>
 
 
 
-
-
-
 <!-- ================= JAVASCRIPT ================= -->
-
 
 <script>
 
-
-// Load previous chat response
-
 window.onload = function(){
 
-
-   let oldMessage = "{{ old_message or '' }}";
-
-   let oldResponse = "{{ old_response or '' }}";
-
-
-    if(oldMessage || oldResponse){
-
-
-        document
-        .getElementById("user-input")
-        .focus();
-
-
-    }
-
+    document.getElementById("user-input").focus();
 
 }
 
-
-
 </script>
-
-
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 
-
 </body>
-
 
 </html>
